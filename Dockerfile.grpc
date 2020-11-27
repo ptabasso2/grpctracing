@@ -1,0 +1,33 @@
+FROM ubuntu:latest
+
+ENV PS1A="[\e[1m\e[38;5;46m\u\e[1m\e[0m@\h:\e[1m\e[38;5;21m\w\e[0m]$ "
+
+# General utilities
+RUN apt update && apt -y install net-tools iputils-ping curl vim procps netcat wget gnupg2 apt-transport-https sudo lsof unzip git zip tree \
+&& echo 'alias ll="ls -lrt"' >> ~/.bashrc && git clone https://github.com/junegunn/fzf.git && ./fzf/install --key-bindings --completion --update-rc && echo 'PS1=$PS1A' >> ~/.bashrc \
+&& echo 'HISTFILESIZE=10000' >> ~/.bashrc &&  echo 'HISTSIZE=1000' >> ~/.bashrc && mkdir -p /root/go/grpc
+
+
+COPY ./grpchw.tar.gz /root/go/grpc/grpchw.tar.gz
+
+# Go dev framework
+ADD https://dl.google.com/go/go1.14.12.linux-amd64.tar.gz /usr/local/go1.14.12.linux-amd64.tar.gz
+RUN cd /usr/local && tar -xvf go1.14.12.linux-amd64.tar.gz && cd /root/go/grpc && tar xvf grpchw.tar.gz && apt update && apt -y install protobuf-compiler
+
+# Go env
+ENV GOROOT="/usr/local/go" 
+ENV GOPATH="/root/go"
+ENV PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+ENV GO111MODULE=on
+
+
+WORKDIR /root/go/grpc
+
+
+RUN go mod init grpc && go get google.golang.org/protobuf/cmd/protoc-gen-go google.golang.org/grpc/cmd/protoc-gen-go-grpc \
+&& go get -u github.com/golang/protobuf/proto && go get -u github.com/golang/protobuf/protoc-gen-go && go get -u google.golang.org/grpc \
+&& protoc --go_out=plugins=grpc:. *.proto && go get gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc && go get gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer \
+&& go build grpc_client.go && go build grpc_server.go
+
+CMD ./grpc_server
+ 
