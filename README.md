@@ -89,7 +89,7 @@ MacOSX:grpctracing - root$ docker exec -it grpc bash
 Result should look like this:<br>
 
 
-<img src="img/grpc%20traces.png" width="680" />
+<img src="img/grpc%20traces.png" width="720" />
 
 
 
