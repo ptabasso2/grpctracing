@@ -4,7 +4,12 @@
 
 
 A detailed step-by-step showing how tracing can be implemented for Grpc.
-This tutorial is based on the example from the official grpc-go repo. 
+This tutorial is based on the example from the official grpc-go repo:<br>
+[grpc-go example][https://github.com/grpc/grpc-go/tree/master/examples/helloworld] 
+
+The tracing details and examples can also be found in the Datadog Go tracer repository:<br>
+[go tracer repo][https://github.com/DataDog/dd-trace-go/blob/v1/contrib/google.golang.org/grpc/example_test.go]
+
 
 **_Preliminary tasks and first time steps_**
 
@@ -44,7 +49,7 @@ At this stage the grpc server is already running and waiting for the client to c
 
 
 ```
-COMP10619:Kafka pejman.tabassomi$ DOCKER_CONTENT_TRUST=1 docker run -d --rm --name datadog_agent -h datadog \ 
+MacOSX:grpctracing - root$ DOCKER_CONTENT_TRUST=1 docker run -d --rm --name datadog_agent -h datadog \ 
 -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
 -p 8126:8126 -p 8125:8125/udp -e DD_API_KEY=<Api key to enter> -e DD_APM_ENABLED=true \
 -e DD_APM_NON_LOCAL_TRAFFIC=true -e DD_PROCESS_AGENT_ENABLED=true -e DD_DOGSTATSD_NON_LOCAL_TRAFFIC="true" \ 
@@ -82,3 +87,8 @@ MacOSX:grpctracing - root$ docker exec -it grpc bash
 <br>
 
 
+
+
+[https://github.com/grpc/grpc-go/tree/master/examples/helloworld]: https://github.com/grpc/grpc-go/tree/master/examples/helloworld
+
+[https://github.com/DataDog/dd-trace-go/blob/v1/contrib/google.golang.org/grpc/example_test.go]: https://github.com/DataDog/dd-trace-go/blob/v1/contrib/google.golang.org/grpc/example_test.go

@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:14.04
 
 ENV PS1A="[\e[1m\e[38;5;46m\u\e[1m\e[0m@\h:\e[1m\e[38;5;21m\w\e[0m]$ "
 
