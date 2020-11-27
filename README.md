@@ -13,6 +13,7 @@ Pull image (docker pull pejdd/grpc:v0) and run the container:
 ``` 
 MacOSX:grpctracing - root$ docker run -it --name grpc -h grpc -d pejdd/grpc:v0
 bc60db3f5bf7d1d25f79d2cbbfe1288233ffb95de8a6cdb06e62b9f3052f8c83
+
 MacOSX:grpctracing - root$ docker exec -it grpc bash
 
 [root@grpc:~/go/grpc]$ tree
@@ -20,11 +21,11 @@ MacOSX:grpctracing - root$ docker exec -it grpc bash
 |-- go.mod
 |-- go.sum
 |-- google.golang.org
-|   `-- grpc
-|       `-- examples
-|           `-- helloworld
-|               `-- helloworld
-|                   `-- grpc.pb.go
+|   -- grpc
+|       -- examples
+|           -- helloworld
+|               -- helloworld
+|                   -- grpc.pb.go
 |-- grpc.proto
 |-- grpc_client
 |-- grpc_client.go
@@ -58,7 +59,7 @@ MacOSX:grpctracing - root$ docker network create nw0
 ```
 
 
-**_connect both containers to the newly created network_**
+**_Connect both containers to the newly created network_**
 
 ```
 MacOSX:grpctracing - root$ docker network connect nw0 grpc
