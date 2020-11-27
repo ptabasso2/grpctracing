@@ -89,9 +89,7 @@ MacOSX:grpctracing - root$ docker exec -it grpc bash
 Result should look like this:<br>
 
 
-![datadog headers in logs](img/grpc%20traces.png =)
-
-<img src="img/grpc%20traces.png" width="200" height="200" />
+<img src="img/grpc%20traces.png" width="400" height="400" />
 
 
 
