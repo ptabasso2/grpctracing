@@ -88,7 +88,12 @@ MacOSX:grpctracing - root$ docker exec -it grpc bash
 
 Result should look like this:<br>
 
-![datadog headers in logs](img/grpc%20traces.png)
+
+
+<figure>
+<img src="img/grpc%20traces.png" alt="trace" style="height: 200px; width: auto; margin-left: 150px">
+<figcaption style="margin-left: 156px;font-style: italic;font-family:arial;color: darkgray;font-size: 11.5px"> Fig 1 - Tracing example </figcaption>
+</figure>
 
 
 
