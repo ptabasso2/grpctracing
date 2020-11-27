@@ -1,4 +1,4 @@
-# grpctracing
+# Grpc Tracing
 
 ## Instructions
 
