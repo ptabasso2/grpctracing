@@ -13,7 +13,7 @@ The tracing details and examples can also be found in the Datadog Go tracer repo
 
 **_Preliminary tasks and first time steps_**
 
-Pull image (docker pull pejdd/grpc:v0) and run the container:
+Pull image (*docker pull pejdd/grpc:v0*) and run the container:
 
 ``` 
 MacOSX:grpctracing - root$ docker run -it --name grpc -h grpc -d pejdd/grpc:v0
