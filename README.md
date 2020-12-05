@@ -3,9 +3,6 @@
 ## Instructions
 
 
-<a href="https://asciinema.org/a/14"><img src="https://asciinema.org/a/14.png" width="836"/></a>
-
-
 A detailed step-by-step showing how tracing can be implemented for Grpc.
 This tutorial is based on the example from the official grpc-go repo:<br>
 [grpc-go example][https://github.com/grpc/grpc-go/tree/master/examples/helloworld] 
